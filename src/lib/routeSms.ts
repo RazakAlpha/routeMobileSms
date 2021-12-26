@@ -44,8 +44,8 @@ export class routeSms {
         routeSms.errorCodes.set(1725, 'Insufficient Credit');
         routeSms.errorCodes.set(1726, 'Insufficient reseller Credit');
 
+        return routeSms
 
-        return this;
     }
 
     

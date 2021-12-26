@@ -35,7 +35,6 @@ routeSms.config(conf);
 smsEngine.sendSync({...})
 smsEngine.sendAsync({...}).then(...).catch(...);
 //OR
-// YOU CAN ALSO ACCESS STATIC MEMBERS DIRECTLY AFTER SETTING CONFIGURATION 
 routeSms.sendSync({...})
 routeSms.sendAsync({...}).then(...).catch(...);
 ```
@@ -89,7 +88,7 @@ smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Conte
 ```javascript
 routeSms.sendAsync({...}).then(function(response){
   console.log(routeSms.convertResponse(response))
-  //[{status:'successful|Failed', code:'errocode', message:'status details', destination:'233241865786', id: 'messageId'}]
+  //[{status:'successful|Failed', code:'errocode', message:'status details', destination:'xxxxxxxxxxx', id: 'messageId'}]
 })
 ```
 
