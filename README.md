@@ -38,15 +38,18 @@ smsEngine.sendAsync({...}).then(...).catch(...);
 // YOU CAN ALSO ACCESS STATIC MEMBERS DIRECTLY AFTER SETTING CONFIGURATION 
 routeSms.sendSync({...})
 routeSms.sendAsync({...}).then(...).catch(...);
+```
 
 
-
-// SETTING CONFIGURATION GLOBALLY
+## SETTING CONFIGURATION GLOBALLY
+```javascript
 smsEngine.conf = {type: 0, dlr: 0, source: 'Sender', url: ''}
 // OR
 routeSms.config(conf);
+```
 
-
+## SENDING MESSAGING
+```javascript
 // SYNCHRONOUSE MESSAGING
 smsEngine.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'});
 // routeSms.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'});
@@ -80,9 +83,6 @@ await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'],
     }).catch(err => {
       console.log(err)
     });
-
-
-
 ```
 
 
