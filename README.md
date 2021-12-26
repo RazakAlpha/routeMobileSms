@@ -21,8 +21,8 @@ import {routeSms} from 'routeMobileSms'
 // INITIALISE 
 const conf = {
     host:'rslr.connectbind.com', 
-    username:'nety-dntc', 
-    password: '@Alpha12', 
+    username:'username', 
+    password: 'password', 
     protocol: 'http', 
     port: 8080
     }
@@ -41,14 +41,14 @@ routeSms.sendAsync({...}).then(...).catch(...);
 ```
 
 
-## SETTING CONFIGURATION GLOBALLY
+### SETTING CONFIGURATION GLOBALLY
 ```javascript
 smsEngine.conf = {type: 0, dlr: 0, source: 'Sender', url: ''}
 // OR
 routeSms.config(conf);
 ```
 
-## SENDING MESSAGING
+### SENDING MESSAGING
 ```javascript
 // SYNCHRONOUSE MESSAGING
 smsEngine.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'});
@@ -63,7 +63,7 @@ smsEngine.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Conten
 // });
 
 // ASYNCHRONOUSE MESSAGING
-await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'})
+smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'})
 .then(response=> {
     // Handle response here
       console.log(response)
@@ -74,7 +74,7 @@ await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'],
 ;
 
 // SENDING WITH CONFIG
-await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here', 
+smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here', 
                     conf: {type: number, dlr: number, url: string}
 }).then(response=> {
     // Handle response here
@@ -83,6 +83,14 @@ await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'],
     }).catch(err => {
       console.log(err)
     });
+```
+
+### INTERPRET SMS RESPONSE
+```javascript
+routeSms.sendAsync({...}).then(function(response){
+  console.log(routeSms.convertResponse(response))
+  //[{status:'successful|Failed', code:'errocode', message:'status details', destination:'233241865786', id: 'messageId'}]
+})
 ```
 
 

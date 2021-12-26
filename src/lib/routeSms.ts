@@ -128,8 +128,6 @@ export class routeSms {
 
     static convertResponse(value: string) {
         const responses = value.split(',');
-        const converted: IMessageResponse[] =[];
-
         return responses.map(response => {
             const parts = response.split('|');
             return {status: parts[0] =='1701' ? 'successful': 'failed', code:parts[0],message: routeSms.errorCodes.get(Number(parts[0])), destination: parts[1], id: parts[2] }
