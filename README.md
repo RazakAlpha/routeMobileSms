@@ -26,22 +26,38 @@ const conf = {
     protocol: 'http', 
     port: 8080
     }
+
 const smsEngine = new routeSms(conf);
+// OR
+routeSms.config(conf);
+
+
 smsEngine.sendSync({...})
 smsEngine.sendAsync({...}).then(...).catch(...);
+//OR
+// YOU CAN ALSO ACCESS STATIC MEMBERS DIRECTLY AFTER SETTING CONFIGURATION 
+routeSms.sendSync({...})
+routeSms.sendAsync({...}).then(...).catch(...);
 
 
 
 // SETTING CONFIGURATION GLOBALLY
 smsEngine.conf = {type: 0, dlr: 0, source: 'Sender', url: ''}
+// OR
+routeSms.config(conf);
+
 
 // SYNCHRONOUSE MESSAGING
 smsEngine.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'});
+// routeSms.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'});
 
 // SENDING WITH CONFIG
 smsEngine.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here', 
                     conf: {type: number, dlr: number, url: string}
 });
+// routeSms.sendSync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here', 
+//                     conf: {type: number, dlr: number, url: string}
+// });
 
 // ASYNCHRONOUSE MESSAGING
 await smsEngine.sendAsync({From: 'Sender', To: 'destination' | ['destinations'], Content: 'message here'})
